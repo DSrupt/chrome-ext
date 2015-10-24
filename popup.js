@@ -1,12 +1,13 @@
+
 chrome.tabs.query({active:false}, function(tabs){
 	var div = document.getElementById('status');
-	var content="<ul>";
+	var content = document.createElement("ul");
+	console.log(tabs);
 	for(i in tabs){
-		console.log(i +" "+i.url);
-		content+=("<li>"+i.url+"</li>");
+		var li = document.createElement("li");
+		li.appendChild(document.createTextNode(tabs[i].id +"\t"+ tabs[i].url));
+		content.appendChild(li);
 	}
-	content += ("</ul>");
-//	content = document.createTextNode(content);
 	div.appendChild(content);
 });
 
